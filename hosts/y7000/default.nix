@@ -51,19 +51,19 @@
   # for Nvidia GPU
 
   # services.xserver.videoDrivers = [ "nvidia" ]; # will install nvidia-vaapi-driver by default
-  # hardware.nvidia = {
-  #   package = config.boot.kernelPackages.nvidiaPackages.stable;
-  #   modesetting.enable = true;
-  #   powerManagement.enable = true;
-  # };
+  hardware.nvidia = {
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    modesetting.enable = true;
+    powerManagement.enable = true;
+  };
 
-  # hardware.opengl = {
-  #   enable = true;
-  #   # if hardware.opengl.driSupport is enabled, mesa is installed and provides Vulkan for supported hardware.
-  #   driSupport = true;
-  #   # needed by nvidia-docker
-  #   driSupport32Bit = true;
-  # };
+  hardware.opengl = {
+    enable = true;
+    # if hardware.opengl.driSupport is enabled, mesa is installed and provides Vulkan for supported hardware.
+    driSupport = true;
+    # needed by nvidia-docker
+    driSupport32Bit = true;
+  };
 
   # virtualisation.docker = {
   #   enable = true;
@@ -77,6 +77,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.11"; # Did you read the comment?
+  system.stateVersion = "23.05"; # Did you read the comment?
 
 }

@@ -14,33 +14,32 @@
     playerctl
     pulsemixer
 
-    ffmpeg-full
+    # ffmpeg-full
 
     # images
-    viu  # terminal image viewer
-    imv  # simple image viewer
-    imagemagick
-    graphviz
+    # viu  # terminal image viewer
+    # imv  # simple image viewer
+    # imagemagick
+    # graphviz
 
     # creative
-    blender   # 3d modeling
-    gimp      # image editing
-    inkscape  # vector graphics
-    krita     # digital painting
+    # blender   # 3d modeling
+    # gimp      # image editing
+    # inkscape  # vector graphics
+    # krita     # digital painting
 
     # 3d printing, eletrical engineering
-    kicad
-    
+    # kicad
   ];
 
   programs = {
     mpv = {
-      enable = true;
+      enable = false;
       defaultProfiles = ["gpu-hq"];
       scripts = [pkgs.mpvScripts.mpris];
     };
 
-    obs-studio.enable = true;
+    # obs-studio.enable = true;
   };
 
   services = {

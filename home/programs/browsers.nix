@@ -20,7 +20,7 @@
 
     # source code: https://github.com/nix-community/home-manager/blob/master/modules/programs/chromium.nix
     google-chrome = {
-      enable = true;
+      enable = false;
 
       # chrome wayland support was broken on nixos-unstable branch, so fallback to stable branch for now
       # https://github.com/swaywm/sway/issues/7562
@@ -28,7 +28,7 @@
 
       commandLineArgs = [
         # make it use GTK_IM_MODULE if it runs with Gtk4, so fcitx5 can work with it.
-        # (only supported by chromium/chrome at this time, not electron) 
+        # (only supported by chromium/chrome at this time, not electron)
         "--gtk-version=4"
         # make it use text-input-v1, which works for kwin 5.27 and weston
         # "--enable-wayland-ime"
