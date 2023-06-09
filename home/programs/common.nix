@@ -3,107 +3,107 @@
 
 {
   home.packages = with pkgs; [
-    # # archives
-    # zip
-    # unzip
-    # p7zip
+    # archives
+    zip
+    unzip
+    p7zip
 
-    # # utils
-    # ripgrep
-    # yq-go    # https://github.com/mikefarah/yq
-    # htop
-    # iotop
-    # iftop
-    # nmon
+    # utils
+    ripgrep
+    yq-go    # https://github.com/mikefarah/yq
+    htop
+    iotop
+    iftop
+    nmon
 
-    # ## networking tools
-    # wireshark
-    # wireguard-tools  # manage wireguard vpn manually, via wg-quick
+    ## networking tools
+    wireshark
+    wireguard-tools  # manage wireguard vpn manually, via wg-quick
 
-    # # misc
-    # libnotify
-    # wineWowPackages.wayland
-    # xdg-utils
+    # misc
+    libnotify
+    wineWowPackages.wayland
+    xdg-utils
 
-    # # productivity
-    # obsidian
-    # hugo
+    # productivity
+    obsidian
+    hugo
 
-    # # IDE
-    # insomnia
-    # jetbrains.pycharm-community
-    # # jetbrains.idea-community
+    # IDE
+    insomnia
+    jetbrains.pycharm-community
+    # jetbrains.idea-community
 
-    # # cloud native
-    # docker-compose
-    # kubectl
-    # kubernetes-helm
-    # terraform
-    # pulumi
+    # cloud native
+    docker-compose
+    kubectl
+    kubernetes-helm
+    terraform
+    pulumi
 
-    # # cloud provider
-    # awscli
+    # cloud provider
+    awscli
 
-    # # C
-    # clang-tools
-    # clang-analyzer
-    # lldb
-    # gnumake
-    # cmake
-    # autoconf
-    # automake
-    # bison
-    # cppcheck
-    # fakeroot
-    # flex
-    # gettext
-    # groff
-    # libtool
-    # m4
-    # patch
-    # pkgconf
-    # texinfo
-    # binutils
+    # C
+    clang-tools
+    clang-analyzer
+    lldb
+    gnumake
+    cmake
+    autoconf
+    automake
+    bison
+    cppcheck
+    fakeroot
+    flex
+    gettext
+    groff
+    libtool
+    m4
+    patch
+    pkgconf
+    texinfo
+    binutils
 
 
-    # # Golang
-    # delve
-    # go
-    # go-outline
-    # go-tools
-    # go2nix
-    # gomodifytags
-    # gopls
-    # gotests
-    # impl
+    # Golang
+    delve
+    go
+    go-outline
+    go-tools
+    go2nix
+    gomodifytags
+    gopls
+    gotests
+    impl
 
-    # # Rust
-    # rustup
+    # Rust
+    rustup
 
-    # # nodejs
     # nodejs
-    # nodePackages.npm
-    # nodePackages.pnpm
-    # yarn
+    nodejs
+    nodePackages.npm
+    nodePackages.pnpm
+    yarn
 
-    # # db related
-    # dbeaver
-    # mycli
-    # pgcli
+    # db related
+    dbeaver
+    mycli
+    pgcli
 
-    # # instant messaging
-    # telegram-desktop
-    # discord
-    # qq      # https://github.com/NixOS/nixpkgs/tree/master/pkgs/applications/networking/instant-messengers/qq
+    # instant messaging
+    telegram-desktop
+    discord
+    qq      # https://github.com/NixOS/nixpkgs/tree/master/pkgs/applications/networking/instant-messengers/qq
 
-    # # music
-    # musescore
+    # music
+    musescore
 
-    # # system call monitoring
-    # strace
-    # ltrace  # library call monitoring
-    # lsof
-    # mtr
+    # system call monitoring
+    strace
+    ltrace  # library call monitoring
+    lsof
+    mtr
   ];
 
   programs = {

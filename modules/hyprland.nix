@@ -68,9 +68,9 @@
     mpd      # for playing system sounds
     mpc-cli  # command-line mpd client
     ncmpcpp  # a mpd client with a UI
-    networkmanagerapplet  # provide GUI app: nm-connection-editor 
+    networkmanagerapplet  # provide GUI app: nm-connection-editor
   ];
-  
+
   xdg.portal = {
     enable = true;
     wlr.enable = true;

@@ -7,7 +7,7 @@
   programs.git = {
     enable = true;
 
-    userName = "Zijun Yu";
-    userEmail = "zijun.yu.joey@gmail.com";
+    userName = "Ryan Yin";
+    userEmail = "xiaoyin_c@qq.com";
   };
 }

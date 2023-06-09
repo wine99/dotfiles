@@ -34,22 +34,22 @@
 
     fonts = with pkgs; [
       # icon fonts
-      material-design-icons
-      font-awesome
+      # material-design-icons
+      # font-awesome
 
       # Noto 系列字体是 Google 主导的，名字的含义是「没有豆腐」（no tofu），因为缺字时显示的方框或者方框被叫作 tofu
       # Noto 系列字族名只支持英文，命名规则是 Noto + Sans 或 Serif + 文字名称。
       # 其中汉字部分叫 Noto Sans/Serif CJK SC/TC/HK/JP/KR，最后一个词是地区变种。
-      noto-fonts        # 大部分文字的常见样式，不包含汉字
-      noto-fonts-cjk    # 汉字部分
-      noto-fonts-emoji  # 彩色的表情符号字体
-      noto-fonts-extra  # 提供额外的字重和宽度变种
+      # noto-fonts        # 大部分文字的常见样式，不包含汉字
+      # noto-fonts-cjk    # 汉字部分
+      # noto-fonts-emoji  # 彩色的表情符号字体
+      # noto-fonts-extra  # 提供额外的字重和宽度变种
 
       # 思源系列字体是 Adobe 主导的。其中汉字部分被称为「思源黑体」和「思源宋体」，是由 Adobe + Google 共同开发的
-      source-sans       # 无衬线字体，不含汉字。字族名叫 Source Sans 3 和 Source Sans Pro，以及带字重的变体，加上 Source Sans 3 VF
-      source-serif      # 衬线字体，不含汉字。字族名叫 Source Code Pro，以及带字重的变体
-      source-han-sans   # 思源黑体
-      source-han-serif  # 思源宋体
+      # source-sans       # 无衬线字体，不含汉字。字族名叫 Source Sans 3 和 Source Sans Pro，以及带字重的变体，加上 Source Sans 3 VF
+      # source-serif      # 衬线字体，不含汉字。字族名叫 Source Code Pro，以及带字重的变体
+      # source-han-sans   # 思源黑体
+      # source-han-serif  # 思源宋体
 
       # nerdfonts
       (nerdfonts.override { fonts = [
@@ -58,22 +58,22 @@
         "Iosevka"
       ];})
 
-      (pkgs.callPackage ../fonts/icomoon-feather-icon-font.nix { })
+      # (pkgs.callPackage ../fonts/icomoon-feather-icon-font.nix { })
 
       # arch linux icon, used temporarily in waybar
-      (pkgs.callPackage ../fonts/archcraft-icon-font.nix { })
+      # (pkgs.callPackage ../fonts/archcraft-icon-font.nix { })
 
     ];
 
     # user defined fonts
     # the reason there's Noto Color Emoji everywhere is to override DejaVu's
     # B&W emojis that would sometimes show instead of some Color emojis
-    fontconfig.defaultFonts = {
-      serif = [ "Noto Serif" "Noto Color Emoji" ];
-      sansSerif = [ "Noto Sans" "Noto Color Emoji" ];
-      monospace = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" ];
-      emoji = [ "Noto Color Emoji" ];
-    };
+    # fontconfig.defaultFonts = {
+    #   serif = [ "Noto Serif" "Noto Color Emoji" ];
+    #   sansSerif = [ "Noto Sans" "Noto Color Emoji" ];
+    #   monospace = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" ];
+    #   emoji = [ "Noto Color Emoji" ];
+    # };
   };
 
   programs.dconf.enable = true;
@@ -117,7 +117,7 @@
     # lm_sensors  # for `sensors` command
 
     # misc
-    # findutils 
+    # findutils
     # file
     # which
     # tree
@@ -204,7 +204,7 @@
       #media-session.enable = true;
     };
 
-    udev.packages = with pkgs; [ 
+    udev.packages = with pkgs; [
       gnome.gnome-settings-daemon
       platformio  # udev rules for platformio
       android-udev-rules
