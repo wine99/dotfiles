@@ -13,7 +13,7 @@
     # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-stable, home-manager, ... }:
     let
       system = "x86_64-linux";
       user = "zijun";
@@ -25,6 +25,7 @@
         # ];
       };
       # selfPkgs = import ./pkgs;
+      specialArgs = inputs // { inherit system user; };
     in
     {
       # overlays.default = selfPkgs.overlay;
@@ -33,8 +34,8 @@
       nixosConfigurations = {
         y7000 = nixpkgs.lib.nixosSystem {
           inherit system;
+          inherit specialArgs;
 
-          # specialArgs = { inherit hyprland user; };
           modules = [
             ./hosts/y7000
 
@@ -43,7 +44,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
 
-              home-manager.extraSpecialArgs = { inherit inputs system user; };
+              home-manager.extraSpecialArgs = specialArgs;
               home-manager.users.${user} = import ./home;
             }
           ];

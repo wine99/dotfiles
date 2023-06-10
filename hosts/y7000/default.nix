@@ -10,7 +10,6 @@
     ./hardware-configuration.nix
     ../../modules/hardware
     ../../modules/user_group.nix
-    ../../modules/services
     ../../modules/fonts.nix
     ../../modules/desktop/hyprland.nix
   ];
@@ -65,9 +64,23 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  security.polkit.enable = true;
-
-  services.printing.enable = true;
+  services = {
+    tlp.enable = true;                      # TLP and auto-cpufreq for power management
+    logind.lidSwitch = "ignore";            # Laptop does not go to sleep when lid is closed
+    auto-cpufreq.enable = true;
+    printing.enable = true;
+    avahi = {                               # Needed to find wireless printer
+      enable = true;
+      nssmdns = true;
+      publish = {                           # Needed for detecting the scanner
+        enable = true;
+        addresses = true;
+        userServices = true;
+      };
+    };
+    dbus.packages = [ pkgs.gcr ];
+    geoclue2.enable = true;
+  };
 
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -87,11 +100,7 @@
     };
   };
 
-  services.power-profiles-daemon.enable = true;
-
-  services.dbus.packages = [ pkgs.gcr ];
-
-  services.geoclue2.enable = true;
+  security.polkit.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -146,15 +155,7 @@
     glxinfo
     glmark2
 
-    # minimal screen capture tool, used by i3 blur lock to take a screenshot
-    # print screen key is also bound to this tool in i3 config
-    # scrot
-
-    # xfce.thunar  # xfce4's file manager
     # xdg-user-dirs
-
-    # embedded development
-    # minicom
 
     # remote desktop(rdp connect)
     # remmina

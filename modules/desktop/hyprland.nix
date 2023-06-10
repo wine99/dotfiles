@@ -1,4 +1,4 @@
-{ config, lib, pkgs, system, inputs, ... }:
+{ config, lib, pkgs, system, hyprland, ... }:
 let
   # exec = with host; if hostName == "work" then "exec nvidia-offload Hyprland" else "exec Hyprland"; # Starting Hyprland with nvidia (bit laggy so disabling)
   exec = "exec Hyprland";
@@ -65,7 +65,7 @@ in
 
   nixpkgs.overlays = [    # Waybar with experimental features
     (final: prev: {
-      waybar = inputs.hyprland.packages.${system}.waybar-hyprland;
+      waybar = hyprland.packages.${system}.waybar-hyprland;
     })
   ];
 }

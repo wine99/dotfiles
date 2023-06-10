@@ -1,4 +1,7 @@
-[
-  ./nvidia.nix
-  ./bluetooth.nix
-]
+{
+  imports = [
+    ./nvidia.nix
+    ./bluetooth.nix
+  ];
+}
+
