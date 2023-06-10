@@ -1,0 +1,4 @@
+[
+  ./nvidia.nix
+  ./bluetooth.nix
+]

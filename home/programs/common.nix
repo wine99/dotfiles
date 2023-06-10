@@ -3,6 +3,14 @@
 
 {
   home.packages = with pkgs; [
+    # gui
+    cinnamon.nemo
+
+    # wayland
+    wev
+    wf-recorder
+    networkmanagerapplet
+
     # archives
     # zip
     # unzip
@@ -13,15 +21,23 @@
     # yq-go    # https://github.com/mikefarah/yq
     # iotop
     # iftop
+    exa
+    nnn
+    btop
+    nvtop
 
     ## networking tools
     # wireshark
     # wireguard-tools  # manage wireguard vpn manually, via wg-quick
 
     # misc
-    libnotify
     # wineWowPackages.wayland
-    xdg-utils
+    # xdg-utils
+
+    # media
+    flac
+    imagemagick
+    libva-utils
 
     # productivity
     # obsidian
@@ -90,7 +106,7 @@
     # pgcli
 
     # instant messaging
-    telegram-desktop
+    # telegram-desktop
     # discord
     # qq      # https://github.com/NixOS/nixpkgs/tree/master/pkgs/applications/networking/instant-messengers/qq
 

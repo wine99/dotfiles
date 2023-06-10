@@ -13,24 +13,41 @@
     # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
-    nixosConfigurations = {
-      y7000 = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+    let
+      system = "x86_64-linux";
+      user = "zijun";
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+        # overlays = [
+        #   self.overlays.default
+        # ];
+      };
+      # selfPkgs = import ./pkgs;
+    in
+    {
+      # overlays.default = selfPkgs.overlay;
+      devShells.${system}.default = import ./shell.nix { inherit pkgs; };
+      formatter.${system} = pkgs.nixpkgs-fmt;
+      nixosConfigurations = {
+        y7000 = nixpkgs.lib.nixosSystem {
+          inherit system;
 
-        modules = [
-          ./hosts/y7000
+          # specialArgs = { inherit hyprland user; };
+          modules = [
+            ./hosts/y7000
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
 
-            home-manager.extraSpecialArgs = inputs;
-            home-manager.users.zijun = import ./home;
-          }
-        ];
+              home-manager.extraSpecialArgs = { inherit inputs system user; };
+              home-manager.users.${user} = import ./home;
+            }
+          ];
+        };
       };
     };
-  };
 }
