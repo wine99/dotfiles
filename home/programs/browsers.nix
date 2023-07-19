@@ -9,9 +9,12 @@
     config.allowUnfree = true;
   };
   in {
-  home.packages = with pkgs-stable; [
-    firefox-wayland  # firefox with wayland support
-    # firefox
+  # home.packages = with pkgs-stable; [
+  #   firefox-wayland  # firefox with wayland support
+  # ];
+
+  home.packages = with pkgs; [
+    firefox
   ];
 
 
@@ -41,12 +44,12 @@
     vscode = {
       enable = true;
       # use the stable version
-      package = pkgs-stable.vscode.override {
-        commandLineArgs = [
-          # make it use text-input-v1, which works for kwin 5.27 and weston
-          # "--enable-wayland-ime"
-        ];
-      };
+      # package = pkgs-stable.vscode.override {
+      #   commandLineArgs = [
+      #     # make it use text-input-v1, which works for kwin 5.27 and weston
+      #     # "--enable-wayland-ime"
+      #   ];
+      # };
 
       # let vscode sync and update its configuration & extensions across devices, using github account.
       # userSettings = {};

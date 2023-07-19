@@ -10,9 +10,9 @@
 
   home.packages = with pkgs; [
     # audio control
-    pavucontrol
-    playerctl
-    pulsemixer
+    # pavucontrol
+    # playerctl
+    # pulsemixer
 
     # ffmpeg-full
 
@@ -42,7 +42,7 @@
     # obs-studio.enable = true;
   };
 
-  services = {
-    playerctld.enable = true;
-  };
+  # services = {
+  #   playerctld.enable = true;
+  # };
 }

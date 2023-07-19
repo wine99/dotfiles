@@ -1,4 +1,5 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs }:
+# { pkgs ? import <nixpkgs> { } }:
 pkgs.mkShell {
   shellHook = ''
           clear

@@ -7,10 +7,6 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    # hyprland.url = "github:hyprwm/Hyprland/v0.25.0";
-    hyprland.url = "github:hyprwm/Hyprland";
-    # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-stable, home-manager, ... }:
@@ -30,23 +26,23 @@
     {
       # overlays.default = selfPkgs.overlay;
       devShells.${system}.default = import ./shell.nix { inherit pkgs; };
-      formatter.${system} = pkgs.nixpkgs-fmt;
+      formatter.${system} = pkgs.alejandra;
       nixosConfigurations = {
         y7000 = nixpkgs.lib.nixosSystem {
           inherit system;
-          inherit specialArgs;
+          # inherit specialArgs;
 
           modules = [
             ./hosts/y7000
 
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
+            # home-manager.nixosModules.home-manager
+            # {
+            #   home-manager.useGlobalPkgs = true;
+            #   home-manager.useUserPackages = true;
 
-              home-manager.extraSpecialArgs = specialArgs;
-              home-manager.users.${user} = import ./home;
-            }
+            #   home-manager.extraSpecialArgs = specialArgs;
+            #   home-manager.users.${user} = import ./home;
+            # }
           ];
         };
       };

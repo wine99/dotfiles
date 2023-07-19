@@ -11,7 +11,7 @@
     ../../modules/hardware
     ../../modules/user_group.nix
     ../../modules/fonts.nix
-    ../../modules/desktop/hyprland.nix
+    # ../../modules/desktop/hyprland.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -53,21 +53,53 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
+    LC_ADDRESS = "en_GB.UTF-8";
+    LC_IDENTIFICATION = "en_GB.UTF-8";
+    LC_MEASUREMENT = "en_GB.UTF-8";
+    LC_MONETARY = "en_GB.UTF-8";
+    LC_NAME = "en_GB.UTF-8";
+    LC_NUMERIC = "en_GB.UTF-8";
+    LC_PAPER = "en_GB.UTF-8";
+    LC_TELEPHONE = "en_GB.UTF-8";
+    LC_TIME = "en_GB.UTF-8";
   };
 
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
+
+  # Enable the GNOME Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
+  # Configure keymap in X11
+  services.xserver = {
+    layout = "us";
+    xkbVariant = "";
+  };
+
+  # Enable touchpad support (enabled default in most desktopManager).
+  services.xserver.libinput = {
+    enable = true;
+
+    # disabling mouse acceleration
+    mouse = {
+      accelProfile = "flat";
+    };
+
+    # disabling touchpad acceleration
+    touchpad = {
+      accelProfile = "flat";
+    };
+  };
+
+  services.xserver.excludePackages = with pkgs; [
+    xterm
+  ];
+
   services = {
-    tlp.enable = true;                      # TLP and auto-cpufreq for power management
+    # tlp.enable = true;                      # TLP and auto-cpufreq for power management
+    # auto-cpufreq.enable = true;
     logind.lidSwitch = "ignore";            # Laptop does not go to sleep when lid is closed
-    auto-cpufreq.enable = true;
     printing.enable = true;
     avahi = {                               # Needed to find wireless printer
       enable = true;
@@ -84,12 +116,18 @@
 
   sound.enable = true;
   hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    jack.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+
+    # use the example session manager (no others are packaged yet so this is enabled by default,
+    # no need to redefine it in your config for now)
+    #media-session.enable = true;
   };
 
   services.openssh = {
@@ -107,12 +145,17 @@
   environment.shells = [ pkgs.fish ];
   environment.variables.EDITOR = "nvim";
   environment.systemPackages = with pkgs; [
-    git
+    pciutils
+    fish
     neovim
+    git
     wget
     curl
     neofetch
     killall
+
+    nil
+    alejandra
 
     # networking tools
     # ethtool
@@ -150,10 +193,10 @@
 
     # video/audio tools
 
-    vdpauinfo
-    vulkan-tools
-    glxinfo
-    glmark2
+    # vdpauinfo
+    # vulkan-tools
+    # glxinfo
+    # glmark2
 
     # xdg-user-dirs
 
@@ -165,7 +208,21 @@
   ];
 
   # https://flatpak.org/setup/NixOS
-  # services.flatpak.enable = true;
+  services.flatpak.enable = true;
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
+
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

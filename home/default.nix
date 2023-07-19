@@ -3,10 +3,10 @@
 {
   imports = [
     # ./fcitx5
-    ./services
-    ./hyprland
-    ./waybar
-    ./wofi
+    # ./services
+    # ./hyprland
+    # ./waybar
+    # ./wofi
     ./programs
     ./shell
   ];

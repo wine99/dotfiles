@@ -5,11 +5,12 @@
   home.packages = with pkgs; [
     # gui
     cinnamon.nemo
+    kitty
 
     # wayland
-    wev
-    wf-recorder
-    networkmanagerapplet
+    # wev
+    # wf-recorder
+    # networkmanagerapplet
 
     # archives
     # zip
