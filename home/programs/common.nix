@@ -38,6 +38,7 @@
     # media
     flac
     imagemagick
+    libva
     libva-utils
 
     # productivity

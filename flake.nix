@@ -26,11 +26,11 @@
     {
       # overlays.default = selfPkgs.overlay;
       devShells.${system}.default = import ./shell.nix { inherit pkgs; };
-      formatter.${system} = pkgs.alejandra;
+      formatter.${system} = pkgs.nixpkgs-fmt;
       nixosConfigurations = {
         y7000 = nixpkgs.lib.nixosSystem {
           inherit system;
-          # inherit specialArgs;
+          inherit specialArgs;
 
           modules = [
             ./hosts/y7000

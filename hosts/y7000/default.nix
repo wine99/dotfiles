@@ -2,20 +2,17 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-
-{ config, pkgs, home-manager, ... } @ args:
+{ config, pkgs, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
     ../../modules/hardware
-    ../../modules/user_group.nix
+    ../../modules/user.nix
+    ../../modules/virtualisation/docker.nix
     ../../modules/fonts.nix
     # ../../modules/desktop/hyprland.nix
   ];
-
-  nixpkgs.config.allowUnfree = true;
-  # nixpkgs.overlays = import ../../overlays args;
 
   nix = {
     settings = {
@@ -25,32 +22,34 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 1w";
+      options = "--delete-older-than 2w";
     };
   };
 
-  boot = {
-    supportedFilesystems = [ "ntfs" ];
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-    kernelParams = [
-      "quiet"
-      "splash"
-    ];
-  };
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
-  networking = {
-    hostName = "y7000";
-    networkmanager.enable = true;
-  };
+  # nixpkgs.overlays = import ../../overlays args;
+
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  networking.hostName = "zijun-y7000"; # Define your hostname.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  # Configure network proxy if necessary
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  # Enable networking
+  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Copenhagen";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_GB.UTF-8";
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_GB.UTF-8";
@@ -69,12 +68,45 @@
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
     xkbVariant = "";
+  };
+
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+  # Needed to find wireless printer
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    # Needed for detecting the scanner
+    publish = {
+      enable = true;
+      addresses = true;
+      userServices = true;
+    };
+  };
+
+  # Enable sound with pipewire.
+  sound.enable = true;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+
+    # use the example session manager (no others are packaged yet so this is enabled by default,
+    # no need to redefine it in your config for now)
+    #media-session.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -92,70 +124,22 @@
     };
   };
 
-  services.xserver.excludePackages = with pkgs; [
-    xterm
-  ];
+  # Laptop does not go to sleep when lid is closed
+  services.logind.lidSwitch = "ignore";
 
-  services = {
-    # tlp.enable = true;                      # TLP and auto-cpufreq for power management
-    # auto-cpufreq.enable = true;
-    logind.lidSwitch = "ignore";            # Laptop does not go to sleep when lid is closed
-    printing.enable = true;
-    avahi = {                               # Needed to find wireless printer
-      enable = true;
-      nssmdns = true;
-      publish = {                           # Needed for detecting the scanner
-        enable = true;
-        addresses = true;
-        userServices = true;
-      };
-    };
-    dbus.packages = [ pkgs.gcr ];
-    geoclue2.enable = true;
-  };
+  # Enable touchpad support (enabled default in most desktopManager).
+  # services.xserver.libinput.enable = true;
 
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
-  services.openssh = {
-    enable = true;
-    settings = {
-      PermitRootLogin = "no";
-      PasswordAuthentication = false;
-    };
-  };
-
-  security.polkit.enable = true;
+  hardware.bluetooth.enable = true;
+  # services.blueman.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.shells = [ pkgs.fish ];
-  environment.variables.EDITOR = "nvim";
   environment.systemPackages = with pkgs; [
-    pciutils
-    fish
     neovim
-    git
     wget
-    curl
+    git
     neofetch
-    killall
-
-    nil
-    alejandra
 
     # networking tools
     # ethtool
@@ -168,6 +152,7 @@
     # lm_sensors  # for `sensors` command
 
     # misc
+    # killall
     # findutils
     # file
     # which
@@ -207,8 +192,7 @@
     # devenv.packages."${pkgs.system}".devenv
   ];
 
-  # https://flatpak.org/setup/NixOS
-  services.flatpak.enable = true;
+  environment.variables.EDITOR = "nvim";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -217,6 +201,20 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  # List services that you want to enable:
+
+  # Enable the OpenSSH daemon.
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+    };
+  };
+
+  # https://flatpak.org/setup/NixOS
+  services.flatpak.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -231,4 +229,5 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
+
 }
