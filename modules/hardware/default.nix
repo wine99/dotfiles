@@ -1,6 +1,6 @@
 {
   imports = [
     ./nvidia.nix
-    ./bluetooth.nix
+    ./misc.nix
   ];
 }

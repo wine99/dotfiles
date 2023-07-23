@@ -1,4 +1,5 @@
-{config, pkgs, ...}: let
+{config, pkgs, ...}:
+let
   browser = ["firefox.desktop"];
 
   # XDG MIME types
@@ -21,15 +22,16 @@
     "video/*" = ["mpv.dekstop"];
     "image/*" = ["imv.desktop"];
     "application/json" = browser;
-    "application/pdf" = ["org.pwmt.zathura.desktop.desktop"];  # TODO: pdf viewer
+    "application/pdf" = ["org.pwmt.zathura.desktop.desktop"];
     "x-scheme-handler/discord" = ["discord.desktop"];
     "x-scheme-handler/spotify" = ["spotify.desktop"];
     "x-scheme-handler/tg" = ["telegramdesktop.desktop"];
   };
-in {
+in
+{
   xdg = {
     enable = true;
-    cacheHome = config.home.homeDirectory + "/.local/cache";
+    # cacheHome = config.home.homeDirectory + "/.local/cache";
 
     mimeApps = {
       enable = true;

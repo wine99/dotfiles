@@ -35,14 +35,14 @@
           modules = [
             ./hosts/y7000
 
-            # home-manager.nixosModules.home-manager
-            # {
-            #   home-manager.useGlobalPkgs = true;
-            #   home-manager.useUserPackages = true;
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
 
-            #   home-manager.extraSpecialArgs = specialArgs;
-            #   home-manager.users.${user} = import ./home;
-            # }
+              home-manager.extraSpecialArgs = specialArgs;
+              home-manager.users.${user} = import ./home;
+            }
           ];
         };
       };

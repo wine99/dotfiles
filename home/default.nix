@@ -2,13 +2,9 @@
 
 {
   imports = [
-    # ./fcitx5
     # ./services
-    # ./hyprland
-    # ./waybar
-    # ./wofi
     ./programs
-    ./shell
+    ./fcitx5
   ];
 
   # Home Manager needs a bit of information about you and the

@@ -1,5 +1,4 @@
 {pkgs, config, lib, ... }: {
-
   home.file.".config/fcitx5/profile".source = ./profile;
   home.file.".config/fcitx5/profile-bak".source = ./profile;  # used for backup
   # fcitx5 每次切换输入法，就会修改 ~/.config/fcitx5/profile 文件，导致我用 hm 管理的配置被覆盖
@@ -13,7 +12,7 @@
     fcitx5.addons = with pkgs; [
         # for flypy chinese input method
         fcitx5-rime
-        # needed enable rime using configtool after installed
+        # you need to enable rime using configtool after installation
         fcitx5-configtool
         fcitx5-chinese-addons
         # fcitx5-mozc    # japanese input method
@@ -22,13 +21,12 @@
   };
 
   systemd.user.sessionVariables = {
-    # copy from  https://github.com/nix-community/home-manager/blob/master/modules/i18n/input-method/fcitx5.nix
+    # copied from  https://github.com/nix-community/home-manager/blob/master/modules/i18n/input-method/fcitx5.nix
     GLFW_IM_MODULE = "fcitx";
     GTK_IM_MODULE = "fcitx";
     QT_IM_MODULE = "fcitx";
     XMODIFIERS = "@im=fcitx";
     INPUT_METHOD = "fcitx";
     IMSETTINGS_MODULE  = "fcitx";
-    
   };
 }

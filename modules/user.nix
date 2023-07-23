@@ -12,15 +12,7 @@
     openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBRCof2pErzjwNhAuJJZNXd/4Se4XUMwg+e2cDl1PwDY zijun@zijun-y7000"
     ];
-    packages = with pkgs; [
-      fish
-      kitty
-      neovim
-      git
-      vscode
-      firefox
-      nil
-      nixpkgs-fmt
-    ];
+    # packages = with pkgs; [
+    # ];
   };
 }

@@ -1,35 +1,22 @@
-{
-  pkgs,
-  config,
-  ...
-}:
+{ pkgs, config, ... }:
 # media - control and enjoy audio/video
 {
   # imports = [
   # ];
 
   home.packages = with pkgs; [
-    # audio control
-    # pavucontrol
+    ffmpeg
+    flac
+    libva
+    libva-utils
+
+    gimp
+    viu
+    imv
     # playerctl
-    # pulsemixer
 
-    # ffmpeg-full
-
-    # images
-    # viu  # terminal image viewer
-    # imv  # simple image viewer
-    # imagemagick
-    # graphviz
-
-    # creative
-    # blender   # 3d modeling
-    # gimp      # image editing
-    # inkscape  # vector graphics
-    # krita     # digital painting
-
-    # 3d printing, eletrical engineering
-    # kicad
+    spotify
+    spicetify-cli
   ];
 
   programs = {
@@ -39,7 +26,7 @@
       scripts = [pkgs.mpvScripts.mpris];
     };
 
-    # obs-studio.enable = true;
+    obs-studio.enable = true;
   };
 
   # services = {

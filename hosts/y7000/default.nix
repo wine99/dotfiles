@@ -139,7 +139,6 @@
     neovim
     wget
     git
-    neofetch
 
     # networking tools
     # ethtool

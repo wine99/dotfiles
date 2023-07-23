@@ -1,180 +1,148 @@
 {pkgs, config, ...}:
 
-
 {
   home.packages = with pkgs; [
-    # gui
-    cinnamon.nemo
     kitty
+    git
+    neovim
+    vscode
+    firefox
+    nil
+    nixpkgs-fmt
+    direnv
 
-    # wayland
-    # wev
-    # wf-recorder
-    # networkmanagerapplet
-
-    # archives
-    # zip
-    # unzip
-    # p7zip
-
-    # utils
-    # ripgrep
-    # yq-go    # https://github.com/mikefarah/yq
-    # iotop
-    # iftop
-    exa
-    nnn
+    wget
+    neofetch
     btop
     nvtop
+    du-dust # Dist Usage rewritten in rust
 
-    ## networking tools
-    # wireshark
-    # wireguard-tools  # manage wireguard vpn manually, via wg-quick
+    ripgrep
+    # command-line YAML, JSON and XML processor
+    # https://github.com/mikefarah/yq
+    yq-go
+    exa
+    nnn
+    fd
+    sd
 
-    # misc
-    # wineWowPackages.wayland
-    # xdg-utils
+    jetbrains.pycharm-community
+    jetbrains.idea-community
 
-    # media
-    flac
-    imagemagick
-    libva
-    libva-utils
+    texlive.combined.scheme-full
+    typst
+    graphviz
+    pandoc
+    zathura
 
-    # productivity
-    # obsidian
-    # hugo
+    gcc
+    clang-tools
+    clang-analyzer
+    lldb
+    cmake
 
-    # IDE
-    # insomnia
-    # jetbrains.pycharm-community
-    # jetbrains.idea-community
-
-    # cloud native
-    # docker-compose
-    # kubectl
-    # kubernetes-helm
-    # terraform
-    # pulumi
-
-    # cloud provider
-    # awscli
-
-    # C
-    # clang-tools
-    # clang-analyzer
-    # lldb
-    # gnumake
-    # cmake
-    # autoconf
-    # automake
-    # bison
-    # cppcheck
-    # fakeroot
-    # flex
-    # gettext
-    # groff
-    # libtool
-    # m4
-    # patch
-    # pkgconf
-    # texinfo
-    # binutils
-
-
-    # Golang
-    # delve
-    # go
-    # go-outline
-    # go-tools
-    # go2nix
-    # gomodifytags
-    # gopls
-    # gotests
-    # impl
-
-    # Rust
-    # rustup
-
-    # nodejs
-    # nodejs
-    # nodePackages.npm
-    # nodePackages.pnpm
-    # yarn
-
-    # db related
-    # dbeaver
-    # mycli
-    # pgcli
-
-    # instant messaging
-    # telegram-desktop
-    # discord
-    # qq      # https://github.com/NixOS/nixpkgs/tree/master/pkgs/applications/networking/instant-messengers/qq
-
-    # music
-    # musescore
-
-    # system call monitoring
-    # strace
-    # ltrace  # library call monitoring
-    # lsof
-    # mtr
+    telegram-desktop
+    discord
+    signal
+    qq
   ];
 
   programs = {
-    # A terminal multiplexer
-    # tmux = {
-    #   enable = true;
-    # };
+    tmux = {
+      enable = true;
+    };
 
     # modern vim
     neovim = {
       enable = true;
-      defaultEditor = true;  # set nvim as default editor
+      defaultEditor = true;
       extraConfig = ''
         set number relativenumber
+        set autoindent expandtab tabstop=2 shiftwidth=2
       '';
     };
 
-    # a cat(1) clone with syntax highlighting and Git integration.
-    # bat = {
-    #   enable = true;
-    #   config = {
-    #     pager = "less -FR";
-    #     theme = "Catppuccin-mocha";
-    #   };
-    #   themes = {
-    #     Catppuccin-mocha = builtins.readFile (pkgs.fetchurl {
-    #       url = "https://raw.githubusercontent.com/catppuccin/bat/main/Catppuccin-mocha.tmTheme";
-    #       hash = "sha256-qMQNJGZImmjrqzy7IiEkY5IhvPAMZpq0W6skLLsng/w=";
-    #     });
-    #   };
-    # };
+    bat = {
+      enable = true;
+      config = {
+        pager = "less -FR";
+        theme = "Catppuccin-mocha";
+      };
+      themes = {
+        Catppuccin-mocha = builtins.readFile (pkgs.fetchurl {
+          url = "https://raw.githubusercontent.com/catppuccin/bat/main/Catppuccin-mocha.tmTheme";
+          # hash = "sha256-qMQNJGZImmjrqzy7IiEkY5IhvPAMZpq0W6skLLsng/w=";
+          hash = "0";
+        });
+      };
+    };
 
-    # btop.enable = true;  # replacement of htop/nmon
-    # exa.enable = true;   # A modern replacement for ‘ls’
-    # jq.enable = true;    # A lightweight and flexible command-line JSON processor
-    # ssh.enable = true;
-    # aria2.enable = true;  # a
-
-    # skim provides a single executable: sk.
     # Basically anywhere you would want to use grep, try sk instead.
-    # skim = {
-    #   enable = true;
-    #   enableBashIntegration = true;
-    # };
+    skim = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+
+    keychain = {
+      enable = true;
+      keys = [ "id_ed25519" ];
+    };
 
     direnv = {
       enable = true;
       nix-direnv.enable = true;
     };
+
+    helix = {
+      enable = true;
+    };
+
+    fish = {
+      enable = true;
+      shellInit = ''
+        fish_add_path $HOME/.cargo/bin
+        fish_add_path $HOME/.ghcup/bin
+        fish_add_path $HOME/.cabal/bin
+        source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+      '';
+    };
+
+    programs.git = {
+      enable = true;
+      userName = "Zijun Yu";
+      userEmail = "zijun.yu.joey@gmail.com";
+    };
   };
 
-  services = {
-    # syncthing.enable = true;
-
-    # auto mount usb drives
-    udiskie.enable = true;
+  home.shellAliases = {
+    ls = "exa";
+    ll = "exa -l";
+    tree = "exa --tree";
+    treel = "exa --tree --long";
   };
+
+  # systemd.user.sessionVariables = {
+  #   # clean up ~
+  #   LESSHISTFILE = config.xdg.cacheHome + "/less/history";
+  #   LESSKEY = config.xdg.configHome + "/less/lesskey";
+  #   WINEPREFIX = config.xdg.dataHome + "/wine";
+  #   XAUTHORITY = "$XDG_RUNTIME_DIR/Xauthority";
+
+  #   # set default applications
+  #   BROWSER = "firefox";
+  #   TERMINAL = "kitty";
+
+  #   # enable scrolling in git diff
+  #   DELTA_PAGER = "less -R";
+
+  #   MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+  # };
+
+  # # the variable systemd is recursing here
+  # home.sessionVariables = systemd.user.sessionVariables;
 }
