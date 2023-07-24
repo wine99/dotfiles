@@ -1,8 +1,9 @@
-[ ] try helix text editor
-[ ] pinyin
-[ ] fish theme
-[ ] wallpaper
-[ ] static files: e.g. wallpapers
-[ ] secrets
-[ ] Siyuan
-[ ] `nixos-rebuild` auto uses this directory
+- now
+  - [ ] default shell is not fish in vscode
+  - [ ] secrets
+  - [ ] Siyuan
+  - [ ] `nixos-rebuild` auto uses this directory
+  - [ ] c and cpp development in nixos
+- future
+  - [ ] try helix text editor
+  - [ ] fcitx5-rime

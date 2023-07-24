@@ -2,9 +2,8 @@
 
 {
   imports = [
-    # ./services
-    ./programs
-    ./fcitx5
+    ./common
+    # ./fcitx5
   ];
 
   # Home Manager needs a bit of information about you and the

@@ -4,9 +4,9 @@
   home.packages = with pkgs; [
     jdk
 
-    (python310.withPackages (p: with p;[ jupyter pygments pandas matplotlib flask ]))
-    poetry
-    streamlit
+    # (python310.withPackages (p: with p;[ jupyter pygments pandas matplotlib flask ]))
+    # poetry
+    # streamlit
 
     nodejs
     yarn
@@ -16,9 +16,9 @@
 
     opam
 
-    racket
+    # racket
 
-    haskellPackages.ghcup
+    # haskellPackages.ghcup
     # stack
     # ghc
     # haskell-language-server

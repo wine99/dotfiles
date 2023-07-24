@@ -17,6 +17,7 @@
 
     spotify
     spicetify-cli
+    yesplaymusic
   ];
 
   programs = {

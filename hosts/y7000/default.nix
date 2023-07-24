@@ -11,6 +11,7 @@
     ../../modules/user.nix
     ../../modules/virtualisation/docker.nix
     ../../modules/fonts.nix
+    ../../modules/desktop/wine.nix
     # ../../modules/desktop/hyprland.nix
   ];
 
@@ -35,7 +36,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "zijun-y7000"; # Define your hostname.
+  networking.hostName = "y7000"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -67,10 +68,11 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
   # services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.displayManager.lightdm.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -136,9 +138,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim
-    wget
-    git
+    # neovim
+    # wget
+    # git
 
     # networking tools
     # ethtool

@@ -10,9 +10,12 @@
     # extraGroups = [ "users" "networkmanager" "wheel" "docker" "wireshark" "adbusers" ];
     # initialHashedPassword = "$y$j9T$5znC98MZa.TIDST9JM3jz/$7tdOFtbwL8tHCdhg1c8bJZnCGUYm51DLzUj8rAHobO6";
     openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBRCof2pErzjwNhAuJJZNXd/4Se4XUMwg+e2cDl1PwDY zijun@zijun-y7000"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBRCof2pErzjwNhAuJJZNXd/4Se4XUMwg+e2cDl1PwDY"
     ];
-    # packages = with pkgs; [
-    # ];
+
+    shell = pkgs.fish;
   };
+
+  programs.fish.enable = true;
+  environment.shells = with pkgs; [ fish ];
 }
