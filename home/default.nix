@@ -1,19 +1,16 @@
-{ config, pkgs, ... }:
+{ config, pkgs, user, ... }:
 
 {
   imports = [
+    ./common
     # ./fcitx5
-    ./hyprland
-    ./programs
-    # ./rofi
-    ./shell
   ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home = {
-    username = "zijun";
-    homeDirectory = "/home/zijun";
+    username = user;
+    homeDirectory = "/home/${user}";
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
