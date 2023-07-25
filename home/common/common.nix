@@ -34,6 +34,7 @@
     pandoc
     zathura
 
+    gnumake
     gcc
     clang-tools
     clang-analyzer
