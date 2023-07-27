@@ -10,6 +10,7 @@
     libva
     libva-utils
 
+    vlc
     gimp
     viu
     imv

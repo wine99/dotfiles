@@ -45,6 +45,11 @@
     discord
     signal-desktop
     qq
+
+    yt-dlp
+    motrix
+    appimage-run
+    file
   ];
 
   programs = {
@@ -52,7 +57,6 @@
       enable = true;
     };
 
-    # modern vim
     neovim = {
       enable = true;
       defaultEditor = true;
@@ -183,8 +187,10 @@
   };
 
   home.shellAliases = {
-    ls = "nnn -e";
-    ll = "nnn -de";
+    # ls = "nnn -e";
+    # ll = "nnn -de";
+    ls = "exa";
+    ll = "exa --long";
     tree = "exa --tree";
     treel = "exa --tree --long";
   };
