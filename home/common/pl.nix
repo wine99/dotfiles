@@ -14,6 +14,8 @@
 
     rustup
 
+    go
+
     opam
 
     # racket

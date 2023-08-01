@@ -6,6 +6,7 @@
     nil
     nixpkgs-fmt
     direnv
+    nvfetcher
 
     any-nix-shell
 

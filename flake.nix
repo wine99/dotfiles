@@ -3,13 +3,15 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
+    # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    spicetify-nix.url = "github:wine99/spicetify-nix";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-stable, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, spicetify-nix, ... }:
     let
       system = "x86_64-linux";
       user = "zijun";
