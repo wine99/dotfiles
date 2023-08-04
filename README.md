@@ -1,4 +1,1 @@
-Adopted From https://github.com/ryan4yin/nix-config
-
-Refrences:
-- https://github.com/Ruixi-rebirth/flakes
+Thank you [tianyaochou](https://github.com/tianyaochou/dotfiles), [ryan4yin](https://github.com/ryan4yin/nix-config), [Ruixi-rebirth](https://github.com/Ruixi-rebirth/flakes), [Misterio77](https://github.com/Misterio77/nix-config)

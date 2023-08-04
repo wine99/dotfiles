@@ -1,17 +1,10 @@
-{ pkgs ? import <nixpkgs> { } }:
+# Shell for bootstrapping flake-enabled nix and home-manager
+# You can enter it through 'nix develop' or (legacy) 'nix-shell'
 
-pkgs.mkShell {
-  shellHook = ''
-          clear
-          echo "
-     ______   _           _
-    |  ____| | |         | |
-    | |__    | |   __ _  | | __   ___   ___
-    |  __|   | |  / _\` | | |/ /  / _ \ / __|
-    | |      | | | (_| | |   <  |  __/ \\__ \\
-    |_|      |_|  \__,_| |_|\_\  \___| |___/
-          "
-            export PS1="[\e[0;34m(Flakes)\$\e[m:\w]\$ "
-  '';
-  nativeBuildInputs = with pkgs; [ git neovim ];
+{ pkgs ? (import ./nixpkgs.nix) { } }: {
+  default = pkgs.mkShell {
+    # Enable experimental features without having to specify the argument
+    NIX_CONFIG = "experimental-features = nix-command flakes";
+    nativeBuildInputs = with pkgs; [ nix home-manager git ];
+  };
 }

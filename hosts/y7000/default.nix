@@ -7,12 +7,13 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/hardware
-    ../../modules/user.nix
-    ../../modules/virtualisation/docker.nix
-    ../../modules/fonts.nix
-    ../../modules/desktop/wine.nix
-    # ../../modules/desktop/hyprland.nix
+    ../common/packages.nix
+    ../common/hardware
+    ../common/user.nix
+    ../common/virtualisation/docker.nix
+    ../common/fonts.nix
+    ../common/desktop/wine.nix
+    # ../common/desktop/hyprland.nix
   ];
 
   nix = {
@@ -139,59 +140,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # neovim
-    # wget
-    # git
-
-    # networking tools
-    # ethtool
-    # iperf3
-    # nmap
-    # socat
-
-    # system tools
-    # sysstat
-    # lm_sensors  # for `sensors` command
-
-    # misc
-    # killall
-    # findutils
-    # file
-    # which
-    # tree
-    # gnused
-    # gnutar
-    # gawk
-    # p7zip
-    # xz
-    # zstd
-    # cifs-utils  # for mounting windows shares
-
-    # (python3.withPackages(ps: with ps; [
-    #   ipython
-    #   pandas
-    #   requests
-    #   pyquery
-    # ]))
-
-    # need to run `conda-install` before using it
-    # need to run `conda-shell` before using command `conda`
-    # conda
-
-    # video/audio tools
-
-    # vdpauinfo
-    # vulkan-tools
-    # glxinfo
-    # glmark2
-
-    # xdg-user-dirs
-
-    # remote desktop(rdp connect)
-    # remmina
-    # freerdp  # required by remmina
-
-    # devenv.packages."${pkgs.system}".devenv
   ];
 
   environment.variables.EDITOR = "nvim";
@@ -231,5 +179,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
-
 }
