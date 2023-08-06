@@ -6,6 +6,7 @@
     # clang-analyzer
     # lldb
 
+    nvtop
     firefox
 
     jetbrains.pycharm-community

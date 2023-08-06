@@ -6,17 +6,16 @@
     nixpkgs-fmt
     direnv
     nvfetcher
-
     any-nix-shell
 
+    gnupg
     wget
     neofetch
     btop
-    nvtop
     du-dust # Dist Usage rewritten in rust
     file
 
-    ranger
+    joshuto
     ripgrep
     # command-line YAML, JSON and XML processor
     # https://github.com/mikefarah/yq
@@ -25,6 +24,7 @@
     fd
     sd
     grc
+    lazygit
 
     texlive.combined.scheme-full
     typst
@@ -33,6 +33,7 @@
     zathura
 
     yt-dlp
+    lux
   ];
 
   programs = {
@@ -92,10 +93,10 @@
       enableFishIntegration = true;
     };
 
-    keychain = {
-      enable = true;
-      keys = [ "id_ed25519" ];
-    };
+    # keychain = {
+    #   enable = true;
+    #   keys = [ "id_ed25519" ];
+    # };
 
     direnv = {
       enable = true;
@@ -129,6 +130,14 @@
           success_symbol = "[λ](bold green)";
           error_symbol = "[λ](bold red)";
         };
+        git_status = {
+          ahead = "⇡$\{count\}";
+          diverged = "⇡$\{ahead_count\}⇣$\{behind_count\}";
+          behind = "⇣$\{count\}";
+          modified = "!$\{count\}";
+          untracked = "?$\{count\}";
+          staged = "+$\{count\}";
+        };
       };
     };
 
@@ -154,11 +163,6 @@
       };
     };
 
-    git = {
-      enable = true;
-      userName = "Zijun Yu";
-      userEmail = "zijun.yu.joey@gmail.com";
-    };
   };
 
   home.shellAliases = {

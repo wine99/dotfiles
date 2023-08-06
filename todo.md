@@ -7,3 +7,5 @@
 - future
   - [ ] try helix text editor
   - [ ] fcitx5-rime
+
+- linux swap ctrl and meta and cofigure meta to behave like command in mac

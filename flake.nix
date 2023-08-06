@@ -13,14 +13,13 @@
     spicetify-nix.url = "github:wine99/spicetify-nix";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nix-darwin, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
       lib = nixpkgs.lib // home-manager.lib;
       systems = [ "x86_64-linux" "aarch64-linux" ];
       forEachSystem = f: lib.genAttrs systems (sys: f pkgsFor.${sys});
       pkgsFor = nixpkgs.legacyPackages;
-      username = "zijun";
     in
     rec {
       # Your custom packages
@@ -48,8 +47,15 @@
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
         y7000 = lib.nixosSystem {
-          specialArgs = { inherit inputs outputs username; };
+          specialArgs = { inherit inputs outputs; username = "zijun"; };
           modules = [ ./hosts/y7000 ];
+        };
+      };
+
+      darwinConfigurations = {
+        Zijuns-MBP = nix-darwin.lib.darwinSystem {
+          specialArgs = { inherit inputs outputs; username = "zyu"; };
+          modules = [ ./hosts/mbp ];
         };
       };
 
@@ -58,9 +64,17 @@
       homeConfigurations = {
         "zijun@y7000" = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs username; };
+          extraSpecialArgs = { inherit inputs outputs; username = "zijun"; };
           modules = [
             ./home/y7000.nix
+          ];
+        };
+
+        "zyu@Zijuns-MBP" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsFor.aarch64-darwin;
+          extraSpecialArgs = { inherit inputs outputs; username = "zyu"; };
+          modules = [
+            ./home/mbp.nix
           ];
         };
       };

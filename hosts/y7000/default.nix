@@ -164,7 +164,7 @@
   };
 
   # https://flatpak.org/setup/NixOS
-  services.flatpak.enable = true;
+  # services.flatpak.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
