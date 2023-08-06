@@ -83,16 +83,12 @@
 
   programs.ssh = {
     enable = true;
-    # Do not set `User` under `Host *` as it takes precedence over the git config
+    # IdentitiesOnly, otherwise git will try with only the key that is in ssh-agent (`ssh-add -l`)
     extraConfig = ''
       AddKeysToAgent yes
+      IgnoreUnknown UseKeychain
       UseKeychain yes
-      IdentityFile ~/.ssh/personal
-      IdentityFile ~/.ssh/work
+      IdentitiesOnly yes
     '';
   };
-
-  programs.fish.loginShellInit = ''
-    ssh-add --apple-load-keychain
-  '';
 }
