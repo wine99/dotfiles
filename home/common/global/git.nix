@@ -12,6 +12,10 @@
       # Local History for Visual Studio Code
       .history/
 
+      .idea
+
+      .direnv
+
       # Debug logs
       *.log
 

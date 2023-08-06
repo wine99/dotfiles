@@ -10,6 +10,7 @@
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
     spicetify-nix.url = "github:wine99/spicetify-nix";
   };
 

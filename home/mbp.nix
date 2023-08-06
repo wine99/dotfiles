@@ -23,7 +23,7 @@
   programs.home-manager.enable = true;
 
   # https://discourse.nixos.org/t/brew-not-on-path-on-m1-mac/26770
-  programs.fish.loginShellInit = ''
+  programs.fish.shellInit = ''
     eval $(/opt/homebrew/bin/brew shellenv)
   '';
 }

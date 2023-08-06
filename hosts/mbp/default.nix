@@ -87,6 +87,7 @@
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
     material-icons
+    fira
     (nerdfonts.override {
       fonts = [
         "FiraCode"
