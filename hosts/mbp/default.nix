@@ -81,6 +81,7 @@
       "google-chrome"
       "intellij-idea"
       "pycharm"
+      "azure-data-studio"
     ];
   };
 
