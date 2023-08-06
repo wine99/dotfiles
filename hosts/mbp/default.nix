@@ -4,6 +4,7 @@
   environment.systemPackages = with pkgs; [
     neovim
   ];
+  environment.variables.EDITOR = "nvim";
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
@@ -56,32 +57,32 @@
   users.users.${username}.shell = pkgs.fish;
   environment.shells = with pkgs; [ fish ];
 
-  # Homebrew
-  # system.activationScripts.homebrew.enable = false;
-  homebrew.enable = true;
-  homebrew.global.brewfile = true;
-  homebrew.onActivation.cleanup = "uninstall";
-  homebrew.taps = [ "homebrew/cask" ];
-  homebrew.brews = [];
-  homebrew.casks = [
-    "raycast"
-    "moom"
-    "firefox"
-    "visual-studio-code"
-    "spotify"
-    "siyuan"
-    "obsidian"
-    "pdf-expert"
-    "zoom"
-    "zotero"
-    "motrix"
-    "discord"
-    "orbstack"
-    "drawio"
-    "google-chrome"
-    "intellij-idea"
-    "pycharm"
-  ];
+  homebrew = {
+    enable = true;
+    # global.brewfile = true;
+    onActivation.cleanup = "uninstall";
+    taps = [ "homebrew/cask" ];
+    brews = [];
+    casks = [
+      "raycast"
+      "moom"
+      "firefox"
+      "visual-studio-code"
+      "spotify"
+      "siyuan"
+      "obsidian"
+      "pdf-expert"
+      "zoom"
+      "zotero"
+      "motrix"
+      "discord"
+      "orbstack"
+      "drawio"
+      "google-chrome"
+      "intellij-idea"
+      "pycharm"
+    ];
+  };
 
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [

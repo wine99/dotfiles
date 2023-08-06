@@ -14,10 +14,7 @@ in
     libva-utils
 
     vlc
-    gimp
-    viu
     imv
-    # playerctl
 
     # spotify
     spotify-tray

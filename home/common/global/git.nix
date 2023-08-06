@@ -61,12 +61,12 @@
             signingKey = "99B8DCACDF1042FD92328F9F5E5A013CFD481871";
           };
           commit.gpgSign = true;
-          github.user = "wine99";
+          # github.user = "wine99";
           core.sshCommand = "ssh -i ~/.ssh/personal";
         };
       }
       {
-        condition = "gitdir:~/work";
+        condition = "gitdir:~/work/";
         contents = {
           user = {
             name = "Zijun Yu";
@@ -74,10 +74,25 @@
             signingKey = "02DF46243A2104CB52247F7DA668AA0D98997C44";
           };
           commit.gpgSign = true;
-          github.user = "zyu-incom";
+          # github.user = "zyu-incom";
           core.sshCommand = "ssh -i ~/.ssh/work";
         };
       }
     ];
   };
+
+  programs.ssh = {
+    enable = true;
+    # Do not set `User` under `Host *` as it takes precedence over the git config
+    extraConfig = ''
+      AddKeysToAgent yes
+      UseKeychain yes
+      IdentityFile ~/.ssh/personal
+      IdentityFile ~/.ssh/work
+    '';
+  };
+
+  programs.fish.loginShellInit = ''
+    ssh-add --apple-load-keychain
+  '';
 }

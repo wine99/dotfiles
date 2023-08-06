@@ -15,7 +15,7 @@
     du-dust # Dist Usage rewritten in rust
     file
 
-    joshuto
+    ranger
     ripgrep
     # command-line YAML, JSON and XML processor
     # https://github.com/mikefarah/yq
@@ -34,6 +34,10 @@
 
     yt-dlp
     lux
+
+    gimp
+    viu
+    # playerctl
   ];
 
   programs = {
@@ -63,6 +67,10 @@
         });
       };
     };
+
+    # joshuto = {
+    #   enable = true;
+    # };
 
     # nnn = {
     #   enable = true;
