@@ -60,9 +60,23 @@
   homebrew = {
     enable = true;
     # global.brewfile = true;
-    onActivation.cleanup = "uninstall";
-    taps = [ "homebrew/cask" ];
-    brews = [];
+    # onActivation.cleanup = "uninstall";
+    taps = [
+      "homebrew/cask"
+      {
+        # https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/install-microsoft-odbc-driver-sql-server-macos?view=sql-server-ver16#17
+        name = "microsoft/mssql-release";
+        clone_target = "https://github.com/Microsoft/homebrew-mssql-release";
+        # If you installed this formula with the registration option (default), you'll
+        # need to manually remove [ODBC Driver 17 for SQL Server] section from
+        # odbcinst.ini after the formula is uninstalled. This can be done by executing
+        # the following command:
+        #   odbcinst -u -d -n "ODBC Driver 17 for SQL Server"
+      }
+    ];
+    brews = [
+      "unixodbc"
+    ];
     casks = [
       "raycast"
       "moom"

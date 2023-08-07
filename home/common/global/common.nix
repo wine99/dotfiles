@@ -2,8 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    nil
-    nixpkgs-fmt
     direnv
     nvfetcher
     any-nix-shell

@@ -26,4 +26,8 @@
   programs.fish.shellInit = ''
     eval $(/opt/homebrew/bin/brew shellenv)
   '';
+
+  home.shellAliases = {
+    pycharm = "/Applications/PyCharm.app/Contents/MacOS/pycharm";
+  };
 }

@@ -26,8 +26,10 @@
     # ghc
     # haskell-language-server
 
-    nixpkgs-fmt
-    nil
+    # nixpkgs-fmt
+    nixfmt
+    # nil
+    rnix-lsp
     shellcheck
   ];
 }
