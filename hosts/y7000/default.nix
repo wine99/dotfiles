@@ -165,9 +165,9 @@
     disableWhileTyping = true;
 
     # disabling mouse acceleration
-    mouse = {
-      accelProfile = "flat";
-    };
+    # mouse = {
+    #   accelProfile = "flat";
+    # };
 
     # disabling touchpad acceleration
     # touchpad = {
