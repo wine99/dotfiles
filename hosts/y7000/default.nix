@@ -8,7 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ../common/packages.nix
-    ../common/hardware
+    ../common/nvidia.nix
     ../common/user.nix
     ../common/virtualisation/docker.nix
     ../common/fonts.nix
@@ -76,11 +76,57 @@
   services.xserver.desktopManager.plasma5.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
 
-  # Configure keymap in X11
   services.xserver = {
     layout = "us";
     xkbVariant = "";
+    xkbOptions = "caps:ctrl_modifier";
+    # xrandrHeads = [{output = "HDMI-0";primary = true;}{output = "VGA-0";}];
   };
+
+  # services = {
+  #   gnome3.gnome-keyring.enable = true;
+  #   upower.enable = true;
+
+  #   dbus = {
+  #     enable = true;
+  #     socketActivated = true;
+  #     packages = [ pkgs.gnome3.dconf ];
+  #   };
+
+  #   autorandr.enable = true;
+
+  #   xserver = {
+  #     enable = true;
+  #     autorun = true;
+  #     startDbusSession = true;
+
+  #     windowManager.xmonad = {
+  #       enable = true;
+  #       enableContribAndExtras = true;
+  #     };
+
+  #     displayManager = {
+  #       defaultSession = "none+xmonad";
+  #       lightdm = {
+  #         greeters.enso = {
+  #           enable = true;
+  #           blur = true;
+  #           # extraConfig = ''
+  #           #   default-wallpaper=/usr/share/streets_of_gruvbox.png
+  #           # '';
+  #         };
+  #       };
+  #       # sessionCommands = ''
+  #       #   xrandr --output VGA-0 --mode 1400x900 --pos 2560x336 --rotate normal --output DVI-D-0 --off --output HDMI-0 --primary --mode 2560x1440 --pos 0x0 --rotate normal
+  #       #   ./.fehbg
+  #       #   '';
+  #     };
+
+  #     # xrandrHeads = [{output = "HDMI-0";primary = true;}{output = "VGA-0";}];
+  #   };
+  # };
+
+  # systemd.services.upower.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -106,16 +152,17 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    # jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
-    #media-session.enable = true;
+    # media-session.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput = {
     enable = true;
+    disableWhileTyping = true;
 
     # disabling mouse acceleration
     mouse = {
@@ -123,19 +170,16 @@
     };
 
     # disabling touchpad acceleration
-    touchpad = {
-      accelProfile = "flat";
-    };
+    # touchpad = {
+    #   accelProfile = "flat";
+    # };
   };
 
   # Laptop does not go to sleep when lid is closed
   services.logind.lidSwitch = "ignore";
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
   hardware.bluetooth.enable = true;
-  # services.blueman.enable = true;
+  services.blueman.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
