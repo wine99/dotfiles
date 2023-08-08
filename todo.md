@@ -1,11 +1,12 @@
 - now
-  - [ ] default shell is not fish in vscode
   - [ ] secrets
   - [ ] Siyuan
-  - [ ] `nixos-rebuild` auto uses this directory
   - [ ] c and cpp development in nixos
+  - [ ] fcitx
+  - [ ] ssh-agent, keyring
+  - [ ] keyboard repeating rate and delay
+  - [ ] natural scrolling
 - future
+  - [ ] xmonad
   - [ ] try helix text editor
   - [ ] fcitx5-rime
-
-- linux swap ctrl and meta and cofigure meta to behave like command in mac

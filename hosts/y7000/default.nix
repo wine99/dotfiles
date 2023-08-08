@@ -67,44 +67,58 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
   # services.xserver.displayManager.gdm.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
-  # services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
 
+  # services.xserver.displayManager.sddm.enable = true;
+  # services.xserver.desktopManager.plasma5.enable = true;
+  # services.xserver.displayManager.lightdm.enable = true;
+
+  services.upower.enable = true;
   services.xserver = {
+    enable = true;
+    desktopManager.plasma5.enable = true;
+    displayManager = {
+      lightdm = {
+        enable = true;
+        greeters.enso = {
+          enable = true;
+          blur = true;
+          # extraConfig = ''
+          #   default-wallpaper=/usr/share/streets_of_gruvbox.png
+          # '';
+        };
+      };
+    };
+
     layout = "us";
     xkbVariant = "";
     xkbOptions = "caps:ctrl_modifier";
-    # xrandrHeads = [{output = "HDMI-0";primary = true;}{output = "VGA-0";}];
   };
 
   # services = {
-  #   gnome3.gnome-keyring.enable = true;
+  #   gnome.gnome-keyring.enable = true;
   #   upower.enable = true;
-
+  #
   #   dbus = {
   #     enable = true;
-  #     socketActivated = true;
-  #     packages = [ pkgs.gnome3.dconf ];
+  #     packages = [ pkgs.dconf ];
   #   };
-
+  #
   #   autorandr.enable = true;
-
+  #
   #   xserver = {
   #     enable = true;
   #     autorun = true;
-  #     startDbusSession = true;
-
+  #
   #     windowManager.xmonad = {
   #       enable = true;
   #       enableContribAndExtras = true;
   #     };
-
+  #
   #     displayManager = {
   #       defaultSession = "none+xmonad";
   #       lightdm = {
@@ -121,12 +135,16 @@
   #       #   ./.fehbg
   #       #   '';
   #     };
-
+  #
+  #     layout = "us";
+  #     xkbVariant = "";
+  #     xkbOptions = "caps:ctrl_modifier";
+  #
   #     # xrandrHeads = [{output = "HDMI-0";primary = true;}{output = "VGA-0";}];
   #   };
   # };
 
-  # systemd.services.upower.enable = true;
+  systemd.services.upower.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -162,7 +180,7 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput = {
     enable = true;
-    disableWhileTyping = true;
+    touchpad.disableWhileTyping = true;
 
     # disabling mouse acceleration
     # mouse = {
