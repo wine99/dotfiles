@@ -80,6 +80,7 @@
     casks = [
       "raycast"
       "moom"
+      "unnaturalscrollwheels"
       "firefox"
       "visual-studio-code"
       "spotify"
