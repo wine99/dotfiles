@@ -79,7 +79,8 @@
     ];
     casks = [
       "raycast"
-      "moom"
+      "rectangle"
+      "alt-tab"
       "unnaturalscrollwheels"
       "firefox"
       "visual-studio-code"

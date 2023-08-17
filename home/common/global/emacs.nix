@@ -7,7 +7,7 @@
   };
   programs.fish.interactiveShellInit = ''
     set --global ALTERNATE_EDITOR "nvim"
-    set --global EDITOR "emacsclient -t"
+    set --global EDITOR "nvim"
     set --global VISUAL "emacsclient -c -a emacs"
   '';
 }
