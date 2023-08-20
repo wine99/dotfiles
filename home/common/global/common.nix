@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     direnv
-    nvfetcher
+    # nvfetcher
     any-nix-shell
 
     gnupg

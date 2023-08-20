@@ -98,6 +98,8 @@
       "intellij-idea"
       "pycharm"
       "azure-data-studio"
+      "parallels"
+      "snipaste"
     ];
   };
 
