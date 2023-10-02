@@ -77,6 +77,8 @@
     brews = [
       "fish"
       "unixodbc"
+      "msodbcsql17"
+      "mssql-tools"
     ];
     casks = [
       "raycast"
