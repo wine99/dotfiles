@@ -6,18 +6,19 @@
 
     jdk
 
-    (python310.withPackages (p: with p;[ jupyter pygments pandas matplotlib flask ]))
+    (python311.withPackages (p: with p;[ jupyter pygments pandas matplotlib ]))
     poetry
 
     nodejs
     yarn
     nodePackages.typescript
+    nodePackages.vue-cli
 
     rustup
 
     go
 
-    # opam
+    opam
 
     # racket
 

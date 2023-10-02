@@ -14,15 +14,22 @@
     file
 
     ranger
+    gawk
     ripgrep
     # command-line YAML, JSON and XML processor
     # https://github.com/mikefarah/yq
     yq-go
-    exa
+    eza
     fd
     sd
     grc
     lazygit
+    pre-commit
+
+    pkg-config
+    postgresql
+    protobuf
+    unixODBC
 
     texlive.combined.scheme-full
     typst
@@ -119,7 +126,7 @@
         fish_add_path $HOME/.cargo/bin
         fish_add_path $HOME/.ghcup/bin
         fish_add_path $HOME/.cabal/bin
-        # source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+        source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
         any-nix-shell fish --info-right | source
       '';
 
@@ -174,10 +181,10 @@
   home.shellAliases = {
     # ls = "nnn -e";
     # ll = "nnn -de";
-    ls = "exa";
-    ll = "exa --long";
-    tree = "exa --tree";
-    treel = "exa --tree --long";
+    ls = "eza";
+    ll = "eza --long";
+    tree = "eza --tree";
+    treel = "eza --tree --long";
   };
 
   home.file.".config/fish/conf.d/mocha.fish".text = import ./fish_theme.nix;

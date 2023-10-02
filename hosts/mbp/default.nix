@@ -13,7 +13,7 @@
   nix = {
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
-      auto-optimise-store = true;
+      auto-optimise-store = false;
     };
     gc = {
       automatic = true;
@@ -59,8 +59,8 @@
 
   homebrew = {
     enable = true;
-    # global.brewfile = true;
-    # onActivation.cleanup = "uninstall";
+    global.brewfile = true;
+    onActivation.cleanup = "uninstall";
     taps = [
       "homebrew/cask"
       {
@@ -75,6 +75,7 @@
       }
     ];
     brews = [
+      "fish"
       "unixodbc"
     ];
     casks = [
@@ -83,10 +84,11 @@
       "alt-tab"
       "unnaturalscrollwheels"
       "firefox"
+      "google-chrome"
+      "chromedriver"
       "visual-studio-code"
       "spotify"
       "siyuan"
-      "obsidian"
       "pdf-expert"
       "zoom"
       "zotero"
@@ -94,11 +96,9 @@
       "discord"
       "orbstack"
       "drawio"
-      "google-chrome"
       "intellij-idea"
       "pycharm"
       "azure-data-studio"
-      "parallels"
       "snipaste"
     ];
   };

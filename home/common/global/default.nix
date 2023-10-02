@@ -4,6 +4,6 @@
     ./common.nix
     ./git.nix
     ./pl.nix
-    ./emacs.nix
+    # ./emacs.nix
   ];
 }
