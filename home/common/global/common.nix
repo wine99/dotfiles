@@ -12,6 +12,7 @@
     btop
     du-dust # Dist Usage rewritten in rust
     file
+    gmp
 
     ranger
     gawk

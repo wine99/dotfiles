@@ -11,7 +11,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
-    spicetify-nix.url = "github:wine99/spicetify-nix";
+    spicetify-nix.url = "github:the-argus/spicetify-nix";
   };
 
   outputs = { self, nixpkgs, nix-darwin, home-manager, ... }@inputs:
