@@ -39,33 +39,11 @@
       # })
   ];
 
-  xdg.desktopEntries.kitty = {
-    terminal = true;
-    startupNotify = false;
-    type = "Application";
-    categories = [ "System" "TerminalEmulator" ];
-    name = "kitty";
-    comment = "Fast, feature-rich, GPU based terminal";
-    genericName = "Terminal emulator";
-    icon = "kitty";
-    exec = "nixGLIntel kitty";
-  };
-
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
     vscode
     nixgl.nixGLIntel
-
-    material-icons
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    noto-fonts-extra
-    source-sans
-    source-serif
-    source-han-sans
-    source-han-serif
     (nerdfonts.override {
       fonts = [
         "FiraCode"

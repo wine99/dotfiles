@@ -13,11 +13,11 @@ in
     libva
     libva-utils
 
-    vlc
+    # vlc
     imv
 
     # spotify
-    spotify-tray
+    # spotify-tray
     # yesplaymusic
   ];
 
@@ -28,11 +28,11 @@ in
       scripts = [ pkgs.mpvScripts.mpris ];
     };
 
-    obs-studio.enable = true;
+    obs-studio.enable = false;
   };
 
   programs.spicetify = {
-    enable = true;
+    enable = false;
     # theme = spicePkgs.themes.official.Default;
     colorScheme = "nord-light";
 
