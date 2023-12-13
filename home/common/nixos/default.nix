@@ -1,7 +1,7 @@
 {
   imports = [
+    ../linux
     ./packages.nix
-    ./media.nix
     ./x.nix
   ];
 }

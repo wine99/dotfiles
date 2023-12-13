@@ -12,6 +12,8 @@
 
     # nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
     spicetify-nix.url = "github:the-argus/spicetify-nix";
+
+    nixgl.url = "github:guibou/nixGL";
   };
 
   outputs = { self, nixpkgs, nix-darwin, home-manager, ... }@inputs:
@@ -68,6 +70,14 @@
           extraSpecialArgs = { inherit inputs outputs; username = "zijun"; };
           modules = [
             ./home/y7000.nix
+          ];
+        };
+
+        "zijun@archlinux" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsFor.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = { inherit inputs outputs; username = "zijun"; };
+          modules = [
+            ./home/arch.nix
           ];
         };
 

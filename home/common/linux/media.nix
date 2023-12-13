@@ -18,7 +18,7 @@ in
 
     # spotify
     spotify-tray
-    yesplaymusic
+    # yesplaymusic
   ];
 
   programs = {

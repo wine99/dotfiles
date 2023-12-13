@@ -7,17 +7,17 @@
   #   rm -f "${config.xdg.configHome}/fcitx5/profile"
   # '';
 
-  i18n.inputMethod = {
-    enabled = "fcitx5";
-    fcitx5.addons = with pkgs; [
-        # for flypy chinese input method
-        # fcitx5-rime
-        # you need to enable rime using configtool after installation
-        fcitx5-configtool
-        fcitx5-chinese-addons
-        fcitx5-gtk
-      ];
-  };
+  # i18n.inputMethod = {
+  #   enabled = "fcitx5";
+  #   fcitx5.addons = with pkgs; [
+  #       # for flypy chinese input method
+  #       # fcitx5-rime
+  #       # you need to enable rime using configtool after installation
+  #       fcitx5-configtool
+  #       fcitx5-chinese-addons
+  #       fcitx5-gtk
+  #     ];
+  # };
 
   systemd.user.sessionVariables = {
     # copied from  https://github.com/nix-community/home-manager/blob/master/modules/i18n/input-method/fcitx5.nix

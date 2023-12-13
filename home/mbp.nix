@@ -13,7 +13,7 @@
   home = {
     inherit username;
     homeDirectory = "/Users/${username}";
-    stateVersion = "23.05";
+    stateVersion = "23.11";
   };
 
   home.packages = with pkgs; [
@@ -26,6 +26,8 @@
   programs.fish.shellInit = ''
     eval $(/opt/homebrew/bin/brew shellenv)
   '';
+
+  program.kitty.font.size = 14;
 
   home.shellAliases = {
     pycharm = "/Applications/PyCharm.app/Contents/MacOS/pycharm";

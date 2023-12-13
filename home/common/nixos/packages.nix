@@ -1,26 +1,4 @@
 { pkgs, ... }: {
-  home.packages = with pkgs; [
-    gnumake
-    gcc
-    # clang-tools
-    # clang-analyzer
-    # lldb
-
-    nvtop
-    firefox
-
-    jetbrains.pycharm-community
-    jetbrains.idea-community
-
-    telegram-desktop
-    discord
-    signal-desktop
-    # qq
-
-    motrix
-    appimage-run
-  ];
-
   programs = {
     vscode = {
       enable = true;
@@ -30,10 +8,4 @@
     };
   };
 
-
-  services.gpg-agent = {
-    enable = true;
-    enableSshSupport = true;
-    enableFishIntegration = true;
-  };
 }

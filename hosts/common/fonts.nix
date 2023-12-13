@@ -27,7 +27,8 @@
       source-han-sans # 思源黑体
       source-han-serif # 思源宋体
 
-      fira
+      # fira
+
       # nerdfonts
       (nerdfonts.override {
         fonts = [

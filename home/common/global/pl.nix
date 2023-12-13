@@ -6,7 +6,7 @@
 
     jdk
 
-    (python311.withPackages (p: with p;[ jupyter pygments pandas matplotlib ]))
+    # (python311.withPackages (p: with p;[ jupyter pygments pandas matplotlib ]))
     poetry
 
     nodejs
