@@ -31,5 +31,6 @@
     enable = true;
     enableSshSupport = true;
     enableFishIntegration = true;
+    pinentryFlavor = "gtk2";
   };
 }

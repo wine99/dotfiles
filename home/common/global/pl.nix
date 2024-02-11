@@ -1,10 +1,8 @@
-{pkgs, config, ...}:
+{ pkgs, config, ... }:
 
 {
   home.packages = with pkgs; [
     cmake
-
-    jdk
 
     # (python311.withPackages (p: with p;[ jupyter pygments pandas matplotlib ]))
     poetry
@@ -33,4 +31,9 @@
     rnix-lsp
     shellcheck
   ];
+
+  programs.java = {
+    enable = true;
+    package = pkgs.jdk21;
+  };
 }
