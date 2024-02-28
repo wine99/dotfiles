@@ -81,6 +81,14 @@
           ];
         };
 
+        "zijun@ZIJUN-R7000" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsFor.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = { inherit inputs outputs; username = "zijun"; };
+          modules = [
+            ./home/wsl.nix
+          ];
+        };
+
         "zyu@Zijuns-MBP" = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.aarch64-darwin;
           extraSpecialArgs = { inherit inputs outputs; username = "zyu"; };

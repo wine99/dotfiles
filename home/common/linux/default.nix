@@ -1,7 +1,7 @@
 { inputs, outputs, lib, config, pkgs, username, ... }: {
   imports = [
     ./packages.nix
-    ./media.nix
+    # ./media.nix
   ];
 
   nixpkgs = {

@@ -30,7 +30,6 @@
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
-    enableFishIntegration = true;
-    pinentryFlavor = "gtk2";
+    # pinentryFlavor = "gtk2";
   };
 }

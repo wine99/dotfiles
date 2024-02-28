@@ -16,7 +16,7 @@
 
     go
 
-    opam
+    # opam
 
     # racket
 
